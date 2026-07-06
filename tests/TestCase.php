@@ -105,7 +105,9 @@ abstract class TestCase extends BaseTestCase
 
     protected function defineDatabaseMigrations(): void
     {
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->app->afterResolving('migrator', function ($migrator): void {
+            $migrator->path(__DIR__.'/database/migrations');
+        });
     }
 
     protected function asCustomer(): User
