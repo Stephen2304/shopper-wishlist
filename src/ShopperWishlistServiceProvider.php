@@ -12,7 +12,10 @@ final class ShopperWishlistServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        $package->name('shopper-wishlist');
+        $package
+            ->name('shopper-wishlist')
+            ->hasMigration('create_wishlist_items_table')
+            ->runsMigrations();
     }
 
     public function packageRegistered(): void
