@@ -14,5 +14,8 @@ final class WishlistAddon extends BaseAddon
         return 'wishlist';
     }
 
-    public function register(ShopperPanel $panel): void {}
+    public function register(ShopperPanel $panel): void
+    {
+        $panel->addonPermissions(['wishlist.browse']);
+    }
 }

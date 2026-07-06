@@ -33,7 +33,8 @@
     "autoload": {
         "psr-4": {
             "Stephen2304\\ShopperWishlist\\": "src/",
-            "Stephen2304\\ShopperWishlist\\Database\\Factories\\": "database/factories/"
+            "Stephen2304\\ShopperWishlist\\Database\\Factories\\": "database/factories/",
+            "Stephen2304\\ShopperWishlist\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
