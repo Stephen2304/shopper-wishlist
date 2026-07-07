@@ -25,4 +25,11 @@ final class ShopperWishlistServiceProvider extends PackageServiceProvider
             $panel->addon(new WishlistAddon);
         });
     }
+
+    public function packageBooted(): void
+    {
+        if (shopper()->hasAddon('wishlist')) {
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        }
+    }
 }

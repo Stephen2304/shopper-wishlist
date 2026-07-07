@@ -31,6 +31,7 @@ use Shopper\Shipping\ShippingServiceProvider;
 use Shopper\ShopperServiceProvider;
 use Shopper\Sidebar\SidebarServiceProvider;
 use Spatie\MediaLibrary\MediaLibraryServiceProvider;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 use Spatie\Permission\PermissionServiceProvider;
 use Stephen2304\ShopperWishlist\ShopperWishlistServiceProvider;
@@ -113,6 +114,12 @@ abstract class TestCase extends BaseTestCase
     protected function asCustomer(): User
     {
         $customer = User::factory()->create();
+
+        Role::query()->firstOrCreate([
+            'name' => config('shopper.admin.roles.user'),
+            'guard_name' => config('shopper.auth.guard'),
+        ]);
+
         $customer->assignRole(config('shopper.admin.roles.user'));
 
         $this->actingAs($customer, config('shopper.auth.guard'));
