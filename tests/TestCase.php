@@ -14,13 +14,16 @@ use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Schemas\SchemasServiceProvider;
+use Filament\Support\Livewire\Partials\DataStoreOverride;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\ViewErrorBag;
 use JaOcero\RadioDeck\RadioDeckServiceProvider;
 use Laravelcm\LivewireSlideOvers\LivewireSlideOverServiceProvider;
 use Livewire\LivewireServiceProvider;
+use Livewire\Mechanisms\DataStore;
 use Mckenziearts\BladeUntitledUIIcons\BladeUntitledUIIconsServiceProvider;
 use Milon\Barcode\BarcodeServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
@@ -47,6 +50,10 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         $this->app->make(PermissionRegistrar::class)->forgetCachedPermissions();
+
+        $this->app['view']->share('errors', new ViewErrorBag);
+
+        $this->app->singleton(DataStore::class, DataStoreOverride::class);
     }
 
     /**

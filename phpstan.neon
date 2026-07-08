@@ -11,5 +11,8 @@ parameters:
         -
             message: '#Access to an undefined property (Illuminate\\Database\\Eloquent\\Model&)?Shopper\\([a-zA-Z]+\\)?Models\\Contracts\\[a-zA-Z]+::\$[a-zA-Z_]+#'
             identifier: property.notFound
+        -
+            message: '#expects view-string(\|null)?, string given#'
+            identifier: argument.type
 
     reportUnmatchedIgnoredErrors: false

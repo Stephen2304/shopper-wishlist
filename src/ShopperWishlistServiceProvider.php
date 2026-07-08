@@ -15,6 +15,8 @@ final class ShopperWishlistServiceProvider extends PackageServiceProvider
         $package
             ->name('shopper-wishlist')
             ->hasTranslations()
+            ->hasViews()
+            ->hasConfigFile('wishlist')
             ->hasMigration('create_wishlist_items_table')
             ->runsMigrations();
     }

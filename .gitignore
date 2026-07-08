@@ -10,3 +10,4 @@ phpstan-baseline.neon
 .idea
 .vscode
 .env
+demo.md
