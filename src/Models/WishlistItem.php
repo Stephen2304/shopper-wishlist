@@ -7,6 +7,7 @@ namespace Stephen2304\ShopperWishlist\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Shopper\Core\Models\Product;
 use Stephen2304\ShopperWishlist\Database\Factories\WishlistItemFactory;
 
 /**
@@ -39,11 +40,11 @@ final class WishlistItem extends Model
     }
 
     /**
-     * @return BelongsTo<Model, $this>
+     * @return BelongsTo<Product, $this>
      */
     public function product(): BelongsTo
     {
-        /** @var class-string<Model> $productModel */
+        /** @var class-string<Product> $productModel */
         $productModel = config('shopper.models.product');
 
         return $this->belongsTo($productModel, 'product_id');

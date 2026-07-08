@@ -6,12 +6,10 @@ parameters:
 
     paths:
         - src
-        - tests
 
     ignoreErrors:
         -
-            message: '#^Called ''env'' outside of the config directory which returns null when the config is cached, use ''config''\.$#'
-            identifier: larastan.noEnvCallsOutsideOfConfig
-            path: tests/TestCase.php
+            message: '#Access to an undefined property (Illuminate\\Database\\Eloquent\\Model&)?Shopper\\([a-zA-Z]+\\)?Models\\Contracts\\[a-zA-Z]+::\$[a-zA-Z_]+#'
+            identifier: property.notFound
 
     reportUnmatchedIgnoredErrors: false
